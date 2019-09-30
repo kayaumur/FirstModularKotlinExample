@@ -2,12 +2,10 @@ package net.xanir.characterdetail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import io.mockk.coEvery
 import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.newSingleThreadContext
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import net.xanir.api.model.*
@@ -19,7 +17,6 @@ import net.xanir.characterdetail.viewModel.CharacterDetailViewModel
 import org.junit.After
 import org.junit.Test
 
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.rules.TestRule
@@ -28,7 +25,7 @@ import org.junit.rules.TestRule
 class CharacterDetailViewModelTest {
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
-    private val mainThreadSurrogate = newSingleThreadContext("UI thread")
+    private val testThreadSurrogate = newSingleThreadContext("UI thread")
 
     private var characterDetailRemote : CharacterDetailRemote = mockk()
     private var characterPlanetRemote : CharacterPlanetRemote = mockk()
@@ -38,7 +35,7 @@ class CharacterDetailViewModelTest {
 
     @Before
     fun init(){
-        Dispatchers.setMain(mainThreadSurrogate)
+        Dispatchers.setMain(testThreadSurrogate)
     }
 
     @Test
@@ -62,6 +59,6 @@ class CharacterDetailViewModelTest {
     @After
     fun tearDown(){
         Dispatchers.resetMain() // reset main dispatcher to the original Main dispatcher
-        mainThreadSurrogate.close()
+        testThreadSurrogate.close()
     }
 }
