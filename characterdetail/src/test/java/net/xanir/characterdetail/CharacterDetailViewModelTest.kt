@@ -6,7 +6,9 @@ import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.newSingleThreadContext
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import net.xanir.api.model.*
 import net.xanir.characterdetail.data.model.CharacterListModel
@@ -40,7 +42,7 @@ class CharacterDetailViewModelTest {
     }
 
     @Test
-    fun check_postCharacterDependentData(){
+    fun check_postCharacterDependentData() = runBlocking {
         val people : People = mockk(null,relaxed = true)
         val observer : Observer<ArrayList<CharacterListModel>> = mockk(null,relaxed = true)
         characterDetailViewModel.postCharacterDependentData(people)
@@ -49,7 +51,7 @@ class CharacterDetailViewModelTest {
     }
 
     @Test
-    fun check_postSpeciesDependentData(){
+    fun check_postSpeciesDependentData() = runBlocking {
         val species : Species = mockk(null,relaxed = true)
         val observer : Observer<ArrayList<CharacterListModel>> = mockk(null,relaxed = true)
         characterDetailViewModel.postSpeciesDependentData(species)

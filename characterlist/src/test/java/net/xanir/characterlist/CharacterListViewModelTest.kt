@@ -12,6 +12,7 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import net.xanir.api.model.ListOfPeople
+import net.xanir.api.model.People
 import net.xanir.characterlist.data.CharacterListRemote
 import net.xanir.characterlist.viewModel.CharacterListViewModel
 import org.junit.After
@@ -29,8 +30,8 @@ class CharacterListViewModelTest {
     var rule: TestRule = InstantTaskExecutorRule()
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
 
-    var characterListRemote : CharacterListRemote = mockk()
-    var characterListViewModel = CharacterListViewModel(characterListRemote)
+    private var characterListRemote : CharacterListRemote = mockk()
+    private var characterListViewModel = CharacterListViewModel(characterListRemote)
 
     @Before
     fun init(){
@@ -40,10 +41,10 @@ class CharacterListViewModelTest {
     @Test
     fun listSuccess() = runBlocking{
         val listOfPeople : ListOfPeople = mockk(null,relaxed = true)
-        coEvery{ characterListRemote.getCharacterList() } returns listOfPeople
-        val observer : Observer<ListOfPeople> = mockk(null,relaxed = true)
+        characterListViewModel.getPeopleListFromResponse(listOfPeople)
+        val observer : Observer<ArrayList<People>> = mockk(null,relaxed = true)
         characterListViewModel.peopleList.observeForever(observer)
-        verify { observer.onChanged(listOfPeople) }
+        verify { observer.onChanged(characterListViewModel.peopleList.value) }
     }
 
     @After

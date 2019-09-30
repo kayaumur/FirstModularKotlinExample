@@ -44,8 +44,8 @@ class CharacterListAdapter : RecyclerView.Adapter<CharacterListHolder>() {
         return mItems.size
     }
 
-    fun setItems(listOfPeople: ListOfPeople){
-        mItems = listOfPeople.results!!
+    fun setItems(listOfPeople : ArrayList<People>){
+        mItems = listOfPeople
         notifyDataSetChanged()
     }
 }
