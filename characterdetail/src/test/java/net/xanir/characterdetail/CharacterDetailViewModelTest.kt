@@ -30,11 +30,11 @@ class CharacterDetailViewModelTest {
     var rule: TestRule = InstantTaskExecutorRule()
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
 
-    var characterDetailRemote : CharacterDetailRemote = mockk()
-    var characterPlanetRemote : CharacterPlanetRemote = mockk()
-    var characterFilmRemote : CharacterFilmRemote = mockk()
-    var characterSpeciesRemote : CharacterSpeciesRemote = mockk()
-    var characterDetailViewModel = CharacterDetailViewModel(characterDetailRemote,characterSpeciesRemote,characterFilmRemote,characterPlanetRemote)
+    private var characterDetailRemote : CharacterDetailRemote = mockk()
+    private var characterPlanetRemote : CharacterPlanetRemote = mockk()
+    private var characterFilmRemote : CharacterFilmRemote = mockk()
+    private var characterSpeciesRemote : CharacterSpeciesRemote = mockk()
+    private var characterDetailViewModel = CharacterDetailViewModel(characterDetailRemote,characterSpeciesRemote,characterFilmRemote,characterPlanetRemote)
 
     @Before
     fun init(){

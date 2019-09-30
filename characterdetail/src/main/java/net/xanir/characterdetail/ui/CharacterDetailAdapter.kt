@@ -14,7 +14,7 @@ import net.xanir.characterdetail.databinding.ListItemFilmBinding
  */
 class CharacterDetailAdapter : RecyclerView.Adapter<CharacterListHolder>() {
 
-    var mItems = arrayListOf<Film>()
+    private var mItems = arrayListOf<Film>()
     private var context : Context? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterListHolder {
@@ -32,9 +32,7 @@ class CharacterDetailAdapter : RecyclerView.Adapter<CharacterListHolder>() {
     }
 
     override fun onBindViewHolder(holder: CharacterListHolder, position: Int) {
-        holder.binding.openingCrawl.text = mItems[position].openingCrawl
-        holder.binding.title.text = String.format(context!!.getString(R.string.film,mItems[position].title))
-        holder.binding.releaseDate.text = String.format(context!!.getString(R.string.releaseDate,mItems[position].releaseDate))
+        holder.setData(mItems[position])
         holder.binding.executePendingBindings()
     }
 
@@ -42,7 +40,7 @@ class CharacterDetailAdapter : RecyclerView.Adapter<CharacterListHolder>() {
         return mItems.size
     }
 
-    fun setmItems(arrayList: ArrayList<Film>){
+    fun setItems(arrayList: ArrayList<Film>){
         mItems = arrayList
         notifyDataSetChanged()
     }

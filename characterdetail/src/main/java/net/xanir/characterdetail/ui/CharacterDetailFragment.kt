@@ -35,23 +35,11 @@ class CharacterDetailFragment : Fragment() {
         if (arguments!!.getString("id") != null) {
             characterDetailViewModel.getCharacter(arguments!!.getString("id")!!)
             characterDetailAdapter = CharacterDetailAdapter()
+            fragmentCharacterDetailBinding.lifecycleOwner = this
             fragmentCharacterDetailBinding.films.adapter = characterDetailAdapter
-            characterDetailViewModel.name.observe(viewLifecycleOwner, Observer {
-                fragmentCharacterDetailBinding.name.text = String.format(getString(R.string.name,it!!)) })
-            characterDetailViewModel.birthYear.observe(viewLifecycleOwner, Observer {
-                fragmentCharacterDetailBinding.birthYear.text = String.format(getString(R.string.birth_date,it!!)) })
-            characterDetailViewModel.height.observe(viewLifecycleOwner, Observer {
-                fragmentCharacterDetailBinding.height.text = String.format(getString(R.string.height,it!!)) })
-            characterDetailViewModel.speciesName.observe(viewLifecycleOwner, Observer {
-                fragmentCharacterDetailBinding.species.text = String.format(getString(R.string.species,it!!)) })
-            characterDetailViewModel.language.observe(viewLifecycleOwner, Observer {
-                fragmentCharacterDetailBinding.language.text = String.format(getString(R.string.language,it!!)) })
-            characterDetailViewModel.homeWorld.observe(viewLifecycleOwner, Observer {
-                fragmentCharacterDetailBinding.home.text = String.format(getString(R.string.homeWorld,it!!)) })
-            characterDetailViewModel.population.observe(viewLifecycleOwner, Observer {
-                fragmentCharacterDetailBinding.population.text = String.format(getString(R.string.population,it!!)) })
+            fragmentCharacterDetailBinding.viewModel = characterDetailViewModel
             characterDetailViewModel.film.observe(viewLifecycleOwner, Observer {
-                characterDetailAdapter.setmItems(it!!) })
+                characterDetailAdapter.setItems(it!!) })
         }
     }
 }

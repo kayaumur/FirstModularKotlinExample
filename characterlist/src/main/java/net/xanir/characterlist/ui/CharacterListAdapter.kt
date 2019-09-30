@@ -36,20 +36,15 @@ class CharacterListAdapter : RecyclerView.Adapter<CharacterListHolder>() {
     }
 
     override fun onBindViewHolder(holder: CharacterListHolder, position: Int) {
-        holder.binding.name.text = String.format(context!!.getString(R.string.name), mItems[position].name)
-        holder.binding.birthYear.text = String.format(context!!.getString(R.string.birth_date), mItems[position].birthYear)
-        holder.binding.container.setOnClickListener{ view ->
-            val bundle = Bundle()
-            bundle.putString("id", Uri.parse((mItems[position].url)).lastPathSegment!!)
-            view.findNavController().navigate(net.xanir.androidcommons.R.id.action_character_list_to_detail_fragment,bundle)
-        }
+        holder.setItem(mItems[position])
+        holder.binding.executePendingBindings()
     }
 
     override fun getItemCount(): Int {
         return mItems.size
     }
 
-    fun setmItems(listOfPeople: ListOfPeople){
+    fun setItems(listOfPeople: ListOfPeople){
         mItems = listOfPeople.results!!
         notifyDataSetChanged()
     }

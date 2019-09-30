@@ -33,6 +33,7 @@ class CharacterListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         characterListAdapter = CharacterListAdapter()
         characterListBinding.characterList.adapter = characterListAdapter
-        characterListViewModel.peopleList.observe(viewLifecycleOwner, Observer { characterListAdapter.setmItems(it!!) })
+        characterListViewModel.getPeopleList()
+        characterListViewModel.peopleList.observe(viewLifecycleOwner, Observer { characterListAdapter.setItems(it!!) })
     }
 }
