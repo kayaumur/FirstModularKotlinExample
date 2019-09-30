@@ -9,10 +9,10 @@ import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import net.xanir.api.model.*
-import net.xanir.characterdetail.data.CharacterDetailRemote
-import net.xanir.characterdetail.data.CharacterFilmRemote
-import net.xanir.characterdetail.data.CharacterPlanetRemote
-import net.xanir.characterdetail.data.CharacterSpeciesRemote
+import net.xanir.characterdetail.data.remotes.CharacterDetailRemote
+import net.xanir.characterdetail.data.remotes.CharacterFilmRemote
+import net.xanir.characterdetail.data.remotes.CharacterPlanetRemote
+import net.xanir.characterdetail.data.remotes.CharacterSpeciesRemote
 import net.xanir.characterdetail.viewModel.CharacterDetailViewModel
 import org.junit.After
 import org.junit.Test

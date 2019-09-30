@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import net.xanir.characterdetail.R
 import net.xanir.characterdetail.databinding.FragmentCharacterDetailBinding
 import net.xanir.characterdetail.viewModel.CharacterDetailViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -35,11 +34,12 @@ class CharacterDetailFragment : Fragment() {
         if (arguments!!.getString("id") != null) {
             characterDetailViewModel.getCharacter(arguments!!.getString("id")!!)
             characterDetailAdapter = CharacterDetailAdapter()
-            fragmentCharacterDetailBinding.lifecycleOwner = this
-            fragmentCharacterDetailBinding.films.adapter = characterDetailAdapter
-            fragmentCharacterDetailBinding.viewModel = characterDetailViewModel
+            fragmentCharacterDetailBinding.container.adapter = characterDetailAdapter
+            characterDetailViewModel.others.observe(viewLifecycleOwner, Observer {
+                characterDetailAdapter.setOtherItems(it!!)
+            })
             characterDetailViewModel.film.observe(viewLifecycleOwner, Observer {
-                characterDetailAdapter.setItems(it!!) })
+                characterDetailAdapter.setFilmList(it!!) })
         }
     }
 }

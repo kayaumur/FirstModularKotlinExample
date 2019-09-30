@@ -1,4 +1,4 @@
-package net.xanir.characterdetail.data
+package net.xanir.characterdetail.data.remotes
 
 import net.xanir.api.api.ApiServices
 

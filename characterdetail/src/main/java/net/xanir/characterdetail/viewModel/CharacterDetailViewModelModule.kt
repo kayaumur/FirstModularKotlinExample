@@ -1,9 +1,9 @@
 package net.xanir.characterdetail.viewModel
 
-import net.xanir.characterdetail.data.CharacterDetailRemote
-import net.xanir.characterdetail.data.CharacterFilmRemote
-import net.xanir.characterdetail.data.CharacterPlanetRemote
-import net.xanir.characterdetail.data.CharacterSpeciesRemote
+import net.xanir.characterdetail.data.remotes.CharacterDetailRemote
+import net.xanir.characterdetail.data.remotes.CharacterFilmRemote
+import net.xanir.characterdetail.data.remotes.CharacterPlanetRemote
+import net.xanir.characterdetail.data.remotes.CharacterSpeciesRemote
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
