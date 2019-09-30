@@ -9,6 +9,7 @@ import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import net.xanir.api.model.*
+import net.xanir.characterdetail.data.model.CharacterListModel
 import net.xanir.characterdetail.data.remotes.CharacterDetailRemote
 import net.xanir.characterdetail.data.remotes.CharacterFilmRemote
 import net.xanir.characterdetail.data.remotes.CharacterPlanetRemote
@@ -41,19 +42,19 @@ class CharacterDetailViewModelTest {
     @Test
     fun check_postCharacterDependentData(){
         val people : People = mockk(null,relaxed = true)
-        val observer : Observer<String> = mockk(null,relaxed = true)
+        val observer : Observer<ArrayList<CharacterListModel>> = mockk(null,relaxed = true)
         characterDetailViewModel.postCharacterDependentData(people)
-        characterDetailViewModel.name.observeForever(observer)
-        verify { observer.onChanged(people.name) }
+        characterDetailViewModel.others.observeForever(observer)
+        verify { observer.onChanged(characterDetailViewModel.others.value) }
     }
 
     @Test
     fun check_postSpeciesDependentData(){
         val species : Species = mockk(null,relaxed = true)
-        val observer : Observer<String> = mockk(null,relaxed = true)
+        val observer : Observer<ArrayList<CharacterListModel>> = mockk(null,relaxed = true)
         characterDetailViewModel.postSpeciesDependentData(species)
-        characterDetailViewModel.speciesName.observeForever(observer)
-        verify { observer.onChanged(species.name) }
+        characterDetailViewModel.others.observeForever(observer)
+        verify { observer.onChanged(characterDetailViewModel.others.value) }
     }
 
     @After

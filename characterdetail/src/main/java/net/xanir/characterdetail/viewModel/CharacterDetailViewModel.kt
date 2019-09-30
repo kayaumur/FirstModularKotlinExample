@@ -76,6 +76,7 @@ class CharacterDetailViewModel(private val characterDetailRemote: CharacterDetai
             try {
                 val species = speciesRemote.getSpecies(parseLastPartOfUrlString(speciesUrl))
                 postSpeciesDependentData(species)
+                getHomeWorldDetail(species.homeWorld!!)
             } catch (e: Exception) {
                 //TODO Add no internet connection or retry option later
                 e.printStackTrace()
@@ -85,7 +86,6 @@ class CharacterDetailViewModel(private val characterDetailRemote: CharacterDetai
     fun postSpeciesDependentData(species: Species){
         otherList.add(CharacterListModel(R.string.language,species.language!!))
         otherList.add(CharacterListModel(R.string.species,species.name!!))
-        getHomeWorldDetail(species.homeWorld!!)
         others.postValue(otherList)
     }
 
