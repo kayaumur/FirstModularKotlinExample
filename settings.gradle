@@ -1,0 +1,2 @@
+include ':app', ':api', ':characterlist', ':characterdetail', ':androidcommons'
+rootProject.name='StarWars'

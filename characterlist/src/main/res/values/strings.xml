@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">characterList</string>
+    <string name="name">Name : %s</string>
+    <string name="birth_date">Birth Year : %s</string>
+</resources>

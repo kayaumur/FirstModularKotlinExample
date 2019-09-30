@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">characterList</string>
+    <string name="name">Name : %s</string>
+    <string name="birth_date">Birth Year : %s</string>
+    <string name="height">Height : %s</string>
+    <string name="species">Species : %s</string>
+    <string name="language">Language : %s</string>
+    <string name="homeWorld">Home World : %s </string>
+    <string name="population">Population : %s</string>
+    <string name="film">Film Name : %s</string>
+    <string name="releaseDate">Release Date : %s</string>
+</resources>
